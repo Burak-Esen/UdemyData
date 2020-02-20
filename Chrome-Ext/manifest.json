@@ -1,0 +1,17 @@
+{
+    "manifest_version":2,
+    "version":"0.1",
+    "name":"test4",
+    "description":"not 1 not 2 not 3. 4 4 4",
+    "icons":{
+        "128":"images/icon_128.png"
+    },
+    "browser_action":{
+        "default_icon":"images/icon_128.png",
+        "default_popup":"popup.html"
+    },
+    "permissions":[
+        "storage", "tabs"
+    ]
+
+}

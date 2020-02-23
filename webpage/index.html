@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div> Hello World!</div>
+    <div style="float: left; margin-top: 15px;"> Hello World!</div>
+    <button id="dark-theme" type="button" class="btn btn-dark" style="margin: 15px;">Dark Toggle</button>
+    <br>
     <input id="myInput" type="text" placeholder="Search..Anything.."><br>
     <input id="myInputName" type="text" placeholder="Search..Name..">
     <input id="myInputEmail" type="text" placeholder="Search..Anything..">
@@ -19,20 +21,26 @@
     <input id="myInput" type="text" placeholder="Search..Anything..">
     <input id="myInput" type="text" placeholder="Search..Anything..">
     <input id="myInput" type="text" placeholder="Search..Anything..">
-    <table class="container-fluid" id="table">
-        <tr class="row col-xs-2">
-            <th class="col-xl-1">User Name</th>
-            <th class="col-xl-2">User Email</th>
-            <th class="col-xl-1">Course Category</th>
-            <th class="col-xl-3">Course Title</th>
-            <th class="col-xl-1">Course Duration</th>
-            <th class="col-xl-1">Completion Ratio</th>
-            <th class="col-xl-1">Course Start Date</th>
-            <th class="col-xl-1">Course Completion Date</th>
-            <th class="col-xl-1">Course Last Accessed Date</th>
-        </tr>
-        <tbody class="col-xs-10"></tbody>
-    </table>
+
+    <div class="table-responsive-xl">
+        <table class="table table-bordered table-hover" id="table">
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>User Email</th>
+                    <th>Course Category</th>
+                    <th style="min-width: 200px;">Course Title</th>
+                    <th>Course Duration</th>
+                    <th>Completion Ratio</th>
+                    <th style="min-width: 120px;">Course Start Date</th>
+                    <th style="min-width: 120px;">Course Completion Date</th>
+                    <th style="min-width: 120px;">Course Last Accessed Date</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
     <script src="js/script.js"></script>
 </body>
 </html>

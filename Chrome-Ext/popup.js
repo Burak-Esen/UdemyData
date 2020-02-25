@@ -6,148 +6,90 @@ axios.get('http://socialnet.mooo.com/eu.php')
     // handle success
     //alert(my_data.data.results);
     let res=response.data.results;
-    var tableTitleArray=["User Name","User Surname","User Email","User Role","User is Deactivated","Course Id","Course_Category","Course_Title",
-        "Course Duration","Num Video Consumed Minutes","Completion Ratio","Course_Enroll_Date","Course_Start_Date","Course_Completion_Date",
-        "Course_First_Completion_Date","Course_Last_Accessed_Date"];
-    document.getElementsByTagName("div")[0].innerHTML="<h2>WELCOME</h2>";
-    document.getElementsByTagName("h2")[0].style.color="red";
-    let rowT=document.createElement("tr");
-    for(var ind=0 ; ind<tableTitleArray.length ; ind++ ){
-        var c_title=document.createElement("th");
-        var title=document.createTextNode(tableTitleArray[ind]);
-        c_title.className="cell";
-        if(ind==7||ind>10)
-            c_title.className="cTitle";
-        c_title.appendChild(title);
-        rowT.appendChild(c_title);
-    }
-    document.querySelector("table").prepend(rowT);
-    
+    let nameArray=[];
     for(var i=0 ; i<res.length ; i++ ){
         var row=document.createElement("tr");
-        if(i%2==0){
-            row.style.backgroundColor="rgb(200,200,200)";
+
+        //push names to name array if it not pushed before. 
+        if(!(nameArray.includes(res[i].user_name+" "+res[i].user_surname))){
+            nameArray.push(res[i].user_name+" "+res[i].user_surname);
         }
+
         var c_name=document.createElement("td");
-        var name=document.createTextNode(res[i].user_name);
-        c_name.className="cell";
+        var name=document.createTextNode(res[i].user_name+" "+res[i].user_surname);
+        c_name.className="user-name";
+        c_name.scope=""+(i+1);
         c_name.appendChild(name);
         row.appendChild(c_name);
         ///
-        var c_sName=document.createElement("td");
-        var sName=document.createTextNode(res[i].user_surname);
-        c_sName.className="cell";
-        c_sName.appendChild(sName);
-        row.appendChild(c_sName);
-        ///
-        var c_email=document.createElement("td");
-        var email=document.createTextNode(res[i].user_email);
-        c_email.className="cell";
-        c_email.appendChild(email);
-        row.appendChild(c_email);
-        ///
-        var c_role=document.createElement("td");
-        var role=document.createTextNode(res[i].user_role);
-        c_role.className="cell";
-        c_role.appendChild(role);
-        row.appendChild(c_role);
-        ///
-        var c_isDeactive=document.createElement("td");
-        var isDeactive=document.createTextNode(res[i].user_is_deactivated);
-        c_isDeactive.className="cell";
-        c_isDeactive.appendChild(isDeactive);
-        row.appendChild(c_isDeactive);
-        ///
-        var c_courseId=document.createElement("td");
-        var courseId=document.createTextNode(res[i].course_id);
-        c_courseId.className="cell";
-        c_courseId.appendChild(courseId);
-        row.appendChild(c_courseId);
-        ///
-        var c_courseCategory=document.createElement("td");
-        var courseCategory=document.createTextNode(res[i].course_category);
-        c_courseCategory.className="cell";
-        c_courseCategory.appendChild(courseCategory);
-        row.appendChild(c_courseCategory);
-        ///
         var c_courseTitle=document.createElement("td");
         var courseTitle=document.createTextNode(res[i].course_title);
-        c_courseTitle.className="cell";
+        c_courseTitle.className="courseTitle";
+        c_courseTitle.scope=""+(i+1);
         c_courseTitle.appendChild(courseTitle);
         row.appendChild(c_courseTitle);
         ///
         var c_courseDuration=document.createElement("td");
-        var courseDuration=document.createTextNode(res[i].course_duration);
-        c_courseDuration.className="cell";
+        var courseDuration=document.createTextNode((res[i].course_duration/60).toFixed(2)+" h");
+        c_courseDuration.className="cDuration";
+        c_courseDuration.scope=""+(i+1);
         c_courseDuration.appendChild(courseDuration);
         row.appendChild(c_courseDuration);
         ///
-        var c_consumed=document.createElement("td");
-        var consumed=document.createTextNode(res[i].num_video_consumed_minutes);
-        c_consumed.className="cell";
-        c_consumed.appendChild(consumed);
-        row.appendChild(c_consumed);
-        ///
         var c_completionRatio=document.createElement("td");
-        var completionRatio=document.createTextNode(res[i].completion_ratio);
-        c_completionRatio.className="cell";
+        var completionRatio=document.createTextNode("% "+res[i].completion_ratio);
+        c_completionRatio.className="cRatio";
+        c_completionRatio.scope=""+(i+1);
         c_completionRatio.appendChild(completionRatio);
         row.appendChild(c_completionRatio);
         ///
-        var c_enrollDate=document.createElement("td");
-        var enrollDate=document.createTextNode(res[i].course_enroll_date);
-        c_enrollDate.className="cell";
-        c_enrollDate.appendChild(enrollDate);
-        row.appendChild(c_enrollDate);
-        ///
         var c_startDate=document.createElement("td");
-        var startDate=document.createTextNode(res[i].course_start_date);
-        c_startDate.className="cell";
+        var startDate=document.createTextNode(((res[i].course_start_date)||" ").substring(0,10));
+        c_startDate.className="cStartD";
+        c_startDate.scope=""+(i+1);
         c_startDate.appendChild(startDate);
         row.appendChild(c_startDate);
         ///
         var c_completionDate=document.createElement("td");
-        var completionDate=document.createTextNode(res[i].course_completion_date);
-        c_completionDate.className="cell";
+        var completionDate=document.createTextNode((res[i].course_completion_date|| " ").substring(0,10));
+        c_completionDate.className="compD";
+        c_completionDate.scope=""+(i+1);
         c_completionDate.appendChild(completionDate);
         row.appendChild(c_completionDate);
         ///
-        var c_first_completion_date=document.createElement("td");
-        var first_completion_date=document.createTextNode(res[i].course_first_completion_date);
-        c_first_completion_date.className="cell";
-        c_first_completion_date.appendChild(first_completion_date);
-        row.appendChild(c_first_completion_date);
-        ///
         var c_course_last_accessed_date=document.createElement("td");
-        var course_last_accessed_date=document.createTextNode(res[i].course_last_accessed_date);
-        c_course_last_accessed_date.className="cell";
+        var course_last_accessed_date=document.createTextNode((res[i].course_last_accessed_date).substring(0,10));
+        c_course_last_accessed_date.className="lastAcc";
+        c_course_last_accessed_date.scope=""+(i+1);
         c_course_last_accessed_date.appendChild(course_last_accessed_date);
         row.appendChild(c_course_last_accessed_date);
         ///
+        row.style.display="none";
         document.querySelector("table tbody").appendChild(row);
         
     }
-    $(document).ready(function(){
-        $("#myInput").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-            });
-        });
+    //adding names to selection option
+    nameArray.sort();
+    for(var i=0; i<nameArray.length;i++){
+        $("#inputGroupSelect01").append("<option>"+nameArray[i]+"</option>");
+    }
+
+    //name change listener and change display
+    let oldSelection;
+    $("#inputGroupSelect01").change(function(){
+        for(var i=0;i<$("#table tbody tr").length;i++){
+            if($("#table tbody tr .user-name").eq(i).text()===oldSelection){
+                $("#table tbody tr").eq(i).hide();
+            }
+        }
+
+        var selectedName=$(this).children("option:selected").val();
+        oldSelection=selectedName;
+
+        for(var i=0;i<$("#table tbody tr").length;i++){
+            if($("#table tbody tr .user-name").eq(i).text()===selectedName){
+                $("#table tbody tr").eq(i).show();
+            }
+        }
     });
-
-    var nameInWidth=$("#table tr th").eq(0).innerWidth()+$("#table tr th").eq(1).innerWidth();
-    $("#myInputName").innerWidth(nameInWidth+"px");
-    $(document).ready(function(){
-        $("#myInputName").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-            });
-        });
-    });
-
-
-
-
 });

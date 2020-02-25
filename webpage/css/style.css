@@ -2,7 +2,7 @@ table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
 }
-#myInput{
+.input-text{
     margin-bottom: 10px;
 }
 .grey{

@@ -6,14 +6,34 @@
     <title>Evros</title>
     <script src="axios.min.js"></script>
     <Script src="jquery-3.4.1.min.js"></Script>
+    <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div> Hello World!</div>
-
-    <table id="table">
-        <tbody id="myTable"></tbody>
-    </table>
+    <div class="input-group mb-3" style="margin-bottom: 0 !important;">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Name...</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01">
+          <option selected>Choose...</option>
+        </select>
+    </div>
+    <div class="table-responsive-sm">
+        <table class="table table-bordered table-hover" id="table">
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Course Title</th>
+                    <th>Course Duration</th>
+                    <th>Completion Ratio</th>
+                    <th>Course Start Date</th>
+                    <th>Course Completion Date</th>
+                    <th>Course_Last Accessed Date</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
     <script src="popup.js"></script>
 </body>
 </html>

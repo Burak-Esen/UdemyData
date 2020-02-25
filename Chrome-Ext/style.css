@@ -1,17 +1,7 @@
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
+body{
+    width:600px;
+    background-color: whitesmoke;
 }
-.cTitle{
-    padding-left: 100px;
-    padding-right: 100px;
-}
-.cell{
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-}
-#myInput{
-    margin-bottom: 10px;
+*{
+    font-size: x-small;
 }
